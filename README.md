@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ngrome/game-platform.svg?branch=master)](https://travis-ci.org/ngrome/game-platform)
+
 # GamePlatform
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
