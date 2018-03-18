@@ -9,9 +9,9 @@ export class AppPage {
     return element(by.css('.container-login100'));
   }
 
-  getParagraphTextByClass(className) {
-    console.log('Find element for className:', className);
-    const _element = element(by.css(className)).getText();
-    return element;
-  }
+  // getParagraphTextByClass(className) {
+  //   console.log('Find element for className:', className);
+  //   const _element = element(by.css(className)).getText();
+  //   return element;
+  // }
 }
