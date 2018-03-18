@@ -5,7 +5,13 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('gplay-root h1')).getText();
+  getLoginPageReady() {
+    return element(by.css('.container-login100'));
+  }
+
+  getParagraphTextByClass(className) {
+    console.log('Find element for className:', className);
+    const _element = element(by.css(className)).getText();
+    return element;
   }
 }
