@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 
-.container-login100 {
+.container {
   width: 100%;
   min-height: 100vh;
   display: -webkit-box;
@@ -19,10 +19,7 @@
   align-items: center;
   padding: 15px;
   background: #0250c5;
-  background: -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
-  background: -o-linear-gradient(bottom, #0250c5, #d43f8d);
-  background: -moz-linear-gradient(bottom, #0250c5, #d43f8d);
-  background: linear-gradient(bottom, #0250c5, #d43f8d);
+  background: linear-gradient(to bottom, #0250c5, #d43f8d);
   position: relative;
   z-index: 1;
 }
@@ -42,7 +39,7 @@
   background-position: center;
 }
 
-.wrap-login100 {
+.wrap-content {
   width: 450px;
   background: #fff;
   border-radius: 3px;
