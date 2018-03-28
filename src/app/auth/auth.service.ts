@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/shareReplay';
+import 'rxjs/add/operator/map';
 
 import * as jwt_decode from 'jwt-decode';
 import * as moment from 'moment';
@@ -13,7 +12,9 @@ import * as moment from 'moment';
 export class AuthService {
 
   private url: String = 'api/auth';
-  private isLoggedIn = false;
+  private token: String;
+
+  private userIsLoggedIn = false;
 
   // store the URL so we can redirect after logging in
   private redirectUrl: string;
@@ -36,8 +37,15 @@ export class AuthService {
     };
 
     return this.http.post('/api/login', parameter)
-      .do(res => this.setSession)
-      .shareReplay();
+      .map((response: Response) => {
+        const authInfo = response.json();
+        if (this.setSession(authInfo)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
   }
 
   /**
@@ -47,11 +55,26 @@ export class AuthService {
    * @param {any} authResult
    * @memberof AuthService
    */
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
+  setSession(authResult) {
+    this.userIsLoggedIn = true;
+    this.token = authResult.token;
+    localStorage.setItem('token', authResult.token);
+    localStorage.setItem('authResult', JSON.stringify(authResult));
 
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    // check the token
+    return true;
+  }
+
+  isLoggedIn() {
+    let _toReturn = false;
+
+    if (this.userIsLoggedIn === false) {
+      this.token = localStorage.getItem('token');
+    }
+    if (this.token !== ''){
+      _toReturn = true;
+    }
+    return _toReturn;
   }
 
 }

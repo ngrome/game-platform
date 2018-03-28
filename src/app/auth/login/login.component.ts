@@ -39,17 +39,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit(formData: FormGroup) {
     this.submitted = true;
-    console.log('Valid?', formData.valid); // true or false
-    console.log('Username', formData.value.username);
-    console.log('Password', formData.value.password);
     formData.value.password = Md5.hashStr(formData.value.password);
-    console.log('md5 Password', formData.value.password);
 
     if (formData.valid) {
       this.authService.login(formData.value.username, formData.value.password)
         .subscribe(
-          () => {
-            console.log('User is logged in');
+          (response) => {
+            console.log('User is logged in ', response);
             this.router.navigateByUrl('/');
           },
           (err) => {
