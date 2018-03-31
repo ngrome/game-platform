@@ -1,4 +1,6 @@
+import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'gplay-auth',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
+    if (this.auth.userIsLogged()) {
+      this.router.navigate(['/logged']);
+    }
   }
 
 }

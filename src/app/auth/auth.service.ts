@@ -65,13 +65,13 @@ export class AuthService {
     return true;
   }
 
-  isLoggedIn() {
+  userIsLogged() {
     let _toReturn = false;
 
     if (this.userIsLoggedIn === false) {
       this.token = localStorage.getItem('token');
     }
-    if (this.token !== ''){
+    if (this.token !== '') {
       _toReturn = true;
     }
     return _toReturn;
