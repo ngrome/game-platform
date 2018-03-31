@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log('User is logged in ', response);
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/logged');
           },
           (err) => {
             this.formError.status = true;
