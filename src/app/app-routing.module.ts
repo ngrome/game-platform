@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoggedComponent } from './logged/logged.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthComponent } from './auth/auth.component';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
