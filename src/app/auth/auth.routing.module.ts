@@ -14,16 +14,13 @@ const authRoutes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'signin', component: RegistrationComponent },
       { path: 'recovery', component: RecoveryComponent },
-    ]
+      { path: '**', component: LoginComponent },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(authRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(authRoutes)],
+  exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

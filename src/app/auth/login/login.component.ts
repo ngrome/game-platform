@@ -11,7 +11,6 @@ import {
 import { Md5 } from 'ts-md5/dist/md5';
 
 import { AuthService } from '../auth.service';
-import { Login } from './login';
 
 @Component({
   selector: 'gplay-login',
@@ -44,6 +43,8 @@ export class LoginComponent implements OnInit {
     formData.value.password = Md5.hashStr(formData.value.password);
 
     if (formData.valid) {
+      // TODO: do not subscribe in component
+      // https://medium.com/@stephenfluin/angular-best-practices-august-2017-edition-690b75cf8232
       this.authService
         .login(formData.value.username, formData.value.password)
         .subscribe(
