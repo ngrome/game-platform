@@ -35,8 +35,7 @@ export class AuthService {
     };
 
     return this.http.post('/api/login', parameter).map((response: Response) => {
-      const authInfo = response.json();
-      if (this.setSession(authInfo)) {
+      if (this.setSession(response)) {
         return true;
       } else {
         return false;
