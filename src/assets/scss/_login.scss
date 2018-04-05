@@ -1,6 +1,11 @@
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
+$primary: #003c8f;
+$secondary: #607d8b;
+$text1: #333333;
+$accent: #ffc107;
+
 .limiter {
   width: 100%;
   margin: 0 auto;
@@ -18,14 +23,14 @@
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #0250c5;
-  background: linear-gradient(to bottom, #0250c5, #d43f8d);
+  background: $primary;
+  background: linear-gradient(to bottom, $primary, $secondary);
   position: relative;
   z-index: 1;
 }
 
 .container-login100::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   z-index: -1;
@@ -63,7 +68,7 @@
 .login100-form-title {
   font-family: Raleway-Black;
   font-size: 30px;
-  color: #333333;
+  color: $text1;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -105,10 +110,10 @@
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(211, 63, 141, 0.6);
+  color: $accent;
 }
 
-.input100:focus+.focus-input100 {
+.input100:focus + .focus-input100 {
   -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
   animation: anim-shadow 0.5s ease-in-out forwards;
 }
@@ -151,8 +156,8 @@
   transition: all 0.4s;
 }
 
-.input100:focus+.focus-input100+.symbol-input100 {
-  color: #d33f8d;
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: $accent;
   padding-left: 18px;
 }
 
@@ -175,7 +180,7 @@
 }
 
 .label-checkbox100::before {
-  content: "\f00c";
+  content: '\f00c';
   font-family: FontAwesome;
   font-size: 13px;
   color: transparent;
@@ -191,7 +196,7 @@
   height: 18px;
   border-radius: 3px;
   background: #fff;
-  border: 2px solid #d33f8d;
+  border: 2px solid $accent;
   left: 0;
   top: 48%;
   -webkit-transform: translateY(-50%);
@@ -201,8 +206,8 @@
   transform: translateY(-50%);
 }
 
-.input-checkbox100:checked+.label-checkbox100::before {
-  color: #d33f8d;
+.input-checkbox100:checked + .label-checkbox100::before {
+  color: $accent;
 }
 
 /*------------------------------------------------------------------
@@ -228,7 +233,7 @@
   width: 100%;
   height: 62px;
   border-radius: 3px;
-  background: #d33f8d;
+  background: $accent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -274,7 +279,7 @@
 }
 
 .btn-face {
-  color: #3b5998;
+  color: $primary;
 }
 
 .btn-face i {
@@ -296,7 +301,7 @@
 
 .btn-face:hover,
 .btn-google:hover {
-  border-color: #d33f8d;
+  border-color: $accent;
 }
 
 /*------------------------------------------------------------------
@@ -311,7 +316,7 @@
   position: absolute;
   max-width: 70%;
   background-color: white;
-  border: 1px solid #c80000;
+  border: 1px solid $accent;
   border-radius: 3px;
   padding: 4px 25px 4px 10px;
   top: 50%;
@@ -323,7 +328,7 @@
   right: 8px;
   pointer-events: none;
   font-family: Raleway-SemiBold;
-  color: #c80000;
+  color: $accent;
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
@@ -336,11 +341,11 @@
 }
 
 .alert-validate::after {
-  content: "\f12a";
+  content: '\f12a';
   font-family: FontAwesome;
   display: block;
   position: absolute;
-  color: #c80000;
+  color: $accent;
   font-size: 15px;
   top: 50%;
   -webkit-transform: translateY(-50%);
