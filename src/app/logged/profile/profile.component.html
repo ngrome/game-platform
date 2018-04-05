@@ -1,0 +1,39 @@
+<form novalidate
+      class="login100-form validate-form"
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit(profileForm)">
+      <span class="login100-form-title p-b-25">Edit Profile</span>
+
+      <div>{{formError.message}}</div>
+
+      <div class="wrap-input100 validate-input m-b-16" data-validate="Valid username is required">
+        <input class="input100 form-control"
+          #model
+          type="password"
+          formControlName="password"
+          placeholder="New Password"
+          required>
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+          <span class="lnr lnr-envelope"></span>
+        </span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+        <input class="input100 form-control"
+          #model
+          type="password"
+          formControlName="newPassword"
+          placeholder="Confirm the new password"
+          required>
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+          <span class="lnr lnr-lock"></span>
+        </span>
+      </div>
+
+      <div class="container-login100-form-btn p-t-25">
+        <input type="submit" class="login100-form-btn" value="Edit"/>
+      </div>
+
+    </form>
