@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Response, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -7,10 +8,8 @@ import 'rxjs/add/operator/map';
 import * as jwt_decode from 'jwt-decode';
 import * as moment from 'moment';
 
-
 @Injectable()
 export class AuthService {
-
   private url: String = 'api/auth';
   private token: String;
 
@@ -21,7 +20,7 @@ export class AuthService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) {}
 
   /**
    *
@@ -30,22 +29,19 @@ export class AuthService {
    * @memberof AuthService
    */
   login(email: String, password: String) {
-
     const parameter = {
       username: email,
-      password: password
+      password: password,
     };
 
-    return this.http.post('/api/login', parameter)
-      .map((response: Response) => {
-        const authInfo = response.json();
-        if (this.setSession(authInfo)) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-
+    return this.http.post('/api/login', parameter).map((response: Response) => {
+      const authInfo = response.json();
+      if (this.setSession(authInfo)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   /**
@@ -71,10 +67,9 @@ export class AuthService {
     if (this.userIsLoggedIn === false) {
       this.token = localStorage.getItem('token');
     }
-    if (this.token !== '') {
+    if (this.token && this.token !== '') {
       _toReturn = true;
     }
     return _toReturn;
   }
-
 }
