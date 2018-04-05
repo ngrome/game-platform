@@ -8,22 +8,20 @@ import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   {
     path: 'logged',
     component: LoggedComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 const routeParams = {
-  enableTracing: true, // <-- debugging purposes only)
+  enableTracing: false, // <-- debugging purposes only)
 };
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, routeParams)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, routeParams)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
