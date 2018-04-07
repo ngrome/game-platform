@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class AuthService {
   private url: String = 'api/auth';
   private token: String;
+  private authResult;
 
   private userIsLoggedIn = false;
 
@@ -43,6 +44,22 @@ export class AuthService {
     });
   }
 
+  changePassword(newPassword: String, newPasswordConfirm: String) {
+    const parameter = {
+      passwordNew: newPassword,
+    };
+
+    return this.http
+      .post(`/api/User/{this.authResult.id}/changePassword`, parameter)
+      .map((response: Response) => {
+        if (this.setSession(response)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+  }
+
   /**
    *
    *
@@ -53,6 +70,7 @@ export class AuthService {
   setSession(authResult) {
     this.userIsLoggedIn = true;
     this.token = authResult.token;
+    this.authResult = authResult;
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('authResult', JSON.stringify(authResult));
 

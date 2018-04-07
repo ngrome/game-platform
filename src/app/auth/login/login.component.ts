@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 
 import { Md5 } from 'ts-md5/dist/md5';
-
 import { AuthService } from '../auth.service';
 
 @Component({
