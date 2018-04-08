@@ -10,6 +10,19 @@
         <input class="input100 form-control"
           #model
           type="password"
+          formControlName="oldPassword"
+          placeholder="Vecchia Password"
+          required>
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+          <span class="lnr lnr-envelope"></span>
+        </span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-16" data-validate="Valid username is required">
+        <input class="input100 form-control"
+          #model
+          type="password"
           formControlName="newPassword"
           placeholder="New Password"
           required>

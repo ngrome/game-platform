@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profileForm = this.fb.group({
+      oldPassword: ['', Validators.required],
       newPassword: ['', Validators.required],
       newPasswordConfirm: ['', Validators.required],
     });
@@ -35,17 +36,12 @@ export class ProfileComponent implements OnInit {
   onSubmit(formData: FormGroup) {
     this.submitted = true;
 
+    formData.value.oldPassword = Md5.hashStr(formData.value.oldPassword);
     formData.value.newPassword = Md5.hashStr(formData.value.newPassword);
-    formData.value.newPasswordConfirm = Md5.hashStr(
-      formData.value.newPasswordConfirm
-    );
 
     if (formData.valid) {
       this.authService
-        .changePassword(
-          formData.value.newPassword,
-          formData.value.newPasswordConfirm
-        )
+        .changePassword(formData.value.oldPassword, formData.value.newPassword)
         .subscribe(
           response => {
             console.log('Password change success ', response);

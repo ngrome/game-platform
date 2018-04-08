@@ -23,6 +23,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  getToken() {
+    return this.token;
+  }
   /**
    *
    *
@@ -44,20 +47,21 @@ export class AuthService {
     });
   }
 
-  changePassword(newPassword: String, newPasswordConfirm: String) {
+  changePassword(oldPassword: String, newPassword: String) {
     const parameter = {
+      passwordOld: oldPassword,
       passwordNew: newPassword,
     };
 
-    return this.http
-      .post(`/api/User/{this.authResult.id}/changePassword`, parameter)
-      .map((response: Response) => {
-        if (this.setSession(response)) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+    const path = `/api/changepassword`;
+
+    return this.http.post(path, parameter).map((response: Response) => {
+      if (this.setSession(response)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   /**

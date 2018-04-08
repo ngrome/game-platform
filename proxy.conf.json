@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://pacific-cliffs-72432.herokuapp.com/",
+    "target": "https://pacific-cliffs-72432.herokuapp.com/api/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
