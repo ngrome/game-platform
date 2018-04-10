@@ -8,7 +8,7 @@ describe('game-platform App', () => {
     page = new AppPage();
   });
 
-  it('should display a login form', () => {
+  xit('should display a login form', () => {
     page.navigateTo();
     browser.wait(page.getLoginPageReady().getAttribute('class'), 10000);
   });
