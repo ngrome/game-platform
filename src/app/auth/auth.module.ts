@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 
 import { AuthService } from './auth.service';
 
@@ -13,6 +17,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './token.interceptor';
+import { UnauthorizedInterceptor } from './unauthorized.interceptor';
 
 @NgModule({
   imports: [
@@ -20,7 +25,7 @@ import { TokenInterceptor } from './token.interceptor';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
   ],
   declarations: [
     AuthComponent,
@@ -33,6 +38,11 @@ import { TokenInterceptor } from './token.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
       multi: true,
     },
   ],
