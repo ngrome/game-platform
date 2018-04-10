@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+  - "9"
 sudo: true
 dist: trusty
 
@@ -20,7 +20,7 @@ before_script:
 script:
   - ng test --watch false -cc
   - npm run e2e
-  - npm run build"
+  - npm run build
 
 deploy:
   provider: pages
