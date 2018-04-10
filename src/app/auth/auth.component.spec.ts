@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthComponent } from './auth.component';
 import { AuthService } from './auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -13,7 +12,7 @@ describe('AuthComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [AuthComponent],
-        imports: [RouterTestingModule, FormsModule, ReactiveFormsModule],
+        imports: [RouterTestingModule],
         providers: [AuthService],
       }).compileComponents();
     })

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoggedComponent } from './logged.component';
 
@@ -6,12 +7,14 @@ describe('LoggedComponent', () => {
   let component: LoggedComponent;
   let fixture: ComponentFixture<LoggedComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoggedComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [LoggedComponent],
+        imports: [RouterTestingModule],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoggedComponent);
