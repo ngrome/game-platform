@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from './auth/auth.module';
-import { LoggedModule } from './logged/logged.module';
+import { AuthModule } from './core/auth/auth.module';
+import { LoggedModule } from './core/logged/logged.module';
 
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 
 @NgModule({

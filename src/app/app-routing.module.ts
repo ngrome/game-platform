@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoggedComponent } from './logged/logged.component';
-import { LoginComponent } from './auth/login/login.component';
-import { AuthComponent } from './auth/auth.component';
-import { AuthGuard } from './guards/auth.guard';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoggedComponent } from './core/logged/logged.component';
+import { LoginComponent } from './core/auth/login/login.component';
+import { AuthComponent } from './core/auth/auth.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },

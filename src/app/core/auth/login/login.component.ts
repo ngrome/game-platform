@@ -12,7 +12,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'gplay-login',
@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService
-  ) {}
+  ) {
+    authService.userIsLoggedIn$.subscribe(result => {
+      console.log(result);
+    });
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({

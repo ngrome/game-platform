@@ -10,9 +10,9 @@ import {
 } from '@angular/common/http';
 
 // service
-import { AuthService } from './auth.service';
-import { TokenInterceptor } from './token.interceptor';
-import { UnauthorizedInterceptor } from './unauthorized.interceptor';
+import { AuthService } from '../service/auth.service';
+import { TokenInterceptor } from '../service/token.interceptor';
+import { UnauthorizedInterceptor } from '../service/unauthorized.interceptor';
 
 // routing
 import { AuthRoutingModule } from './auth.routing.module';

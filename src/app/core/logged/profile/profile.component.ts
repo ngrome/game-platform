@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 
 import { Md5 } from 'ts-md5/dist/md5';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'gplay-profile',
