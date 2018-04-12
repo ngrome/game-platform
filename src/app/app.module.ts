@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { LoggedModule } from './logged/logged.module';
 
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 
@@ -18,6 +20,7 @@ import { AppComponent } from './app.component';
     AuthModule,
     LoggedModule,
     AppRoutingModule,
+    Ng4LoadingSpinnerModule.forRoot(),
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

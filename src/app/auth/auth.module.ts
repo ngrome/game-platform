@@ -1,3 +1,4 @@
+// angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,24 +9,27 @@ import {
   HttpClientModule,
 } from '@angular/common/http';
 
+// service
 import { AuthService } from './auth.service';
+import { TokenInterceptor } from './token.interceptor';
+import { UnauthorizedInterceptor } from './unauthorized.interceptor';
 
+// routing
 import { AuthRoutingModule } from './auth.routing.module';
 
+// component
 import { AuthComponent } from './auth.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { LoginComponent } from './login/login.component';
-import { TokenInterceptor } from './token.interceptor';
-import { UnauthorizedInterceptor } from './unauthorized.interceptor';
 
 @NgModule({
   imports: [
-    CommonModule,
-    AuthRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    CommonModule,
+    AuthRoutingModule,
   ],
   declarations: [
     AuthComponent,

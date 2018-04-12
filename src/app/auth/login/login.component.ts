@@ -3,12 +3,15 @@ import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
-  ReactiveFormsModule,
   FormBuilder,
   Validators,
 } from '@angular/forms';
 
+import 'rxjs/add/operator/filter';
 import { Md5 } from 'ts-md5/dist/md5';
+
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -27,7 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private spinnerService: Ng4LoadingSpinnerService
   ) {}
 
   ngOnInit() {
@@ -35,21 +39,32 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.loginForm.valueChanges
+      .map(value => {
+        value.password = Md5.hashStr(value.password);
+        console.log('Reactive Form - loginForm = ', JSON.stringify(value));
+        return value;
+      })
+      .filter(value => this.loginForm.valid)
+      .subscribe(value => {
+        console.log(
+          'Model Driven Form valid value: vm = ',
+          JSON.stringify(value)
+        );
+      });
   }
 
   onSubmit(formData: FormGroup) {
-    this.submitted = true;
-    formData.value.password = Md5.hashStr(formData.value.password);
-
     if (formData.valid) {
-      // TODO: do not subscribe in component
-      // https://medium.com/@stephenfluin/angular-best-practices-august-2017-edition-690b75cf8232
+      this.spinnerService.show();
       this.authService
         .login(formData.value.username, formData.value.password)
         .subscribe(
           response => {
             console.log('User is logged in ', response);
             this.router.navigateByUrl('/logged');
+            this.spinnerService.hide();
           },
           err => {
             this.formError.status = true;
@@ -61,6 +76,7 @@ export class LoginComponent implements OnInit {
               this.formError.message =
                 'Servizio momentaneamente non raggiungibile';
             }
+            this.spinnerService.hide();
           }
         );
     }
