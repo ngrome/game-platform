@@ -36,8 +36,8 @@ export class ProfileComponent implements OnInit {
   onSubmit(formData: FormGroup) {
     this.submitted = true;
 
-    formData.value.oldPassword = Md5.hashStr(formData.value.oldPassword);
-    formData.value.newPassword = Md5.hashStr(formData.value.newPassword);
+    formData.value.oldPassword = formData.value.oldPassword;
+    formData.value.newPassword = formData.value.newPassword;
 
     if (formData.valid) {
       this.authService
