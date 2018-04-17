@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 
 import * as jwt_decode from 'jwt-decode';
 import * as moment from 'moment';
+
+import { environment } from '../../../environments/environment';
 import { Auth } from '../interface/auth';
 
 @Injectable()
@@ -42,7 +44,7 @@ export class AuthService {
     };
 
     return this.http
-      .post<Auth>('/api/login', parameter)
+      .post<Auth>(`${environment.apiUrl}login`, parameter)
       .map((response: Auth) => {
         if (this.setSession(response)) {
           return true;
@@ -63,7 +65,7 @@ export class AuthService {
       passwordNew: newPassword,
     };
 
-    const path = `/api/changepassword`;
+    const path = `${environment.apiUrl}changepassword`;
 
     return this.http
       .post<Auth>(path, { params: parameter })
