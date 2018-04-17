@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
-import { AuthService } from '../../auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthService } from '../../service/auth.service';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;

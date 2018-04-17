@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 
 import { LoginComponent } from './login.component';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../service/auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

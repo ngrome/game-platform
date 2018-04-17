@@ -2,12 +2,14 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthGuard } from './auth.guard';
-import { AuthService } from '../auth/auth.service';
+
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router,
 } from '@angular/router';
+
+import { AuthService } from '../../core/service/auth.service';
 
 describe('AuthGuard', () => {
   beforeEach(() => {
