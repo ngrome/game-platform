@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --watch --proxy-conf proxy.conf.json",
-    "build": "ng build --prod --deploy-url https://cdn.rawgit.com/ngrome/login-example/gh-pages/",
+    "build":
+      "ng build --prod --base-href /login-example --deploy-url https://cdn.rawgit.com/ngrome/login-example/gh-pages/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
